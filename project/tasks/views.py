@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 
+from .sample_task import create_task
+
+
 def home(request):
     return render(request, "home.html")
 
@@ -11,7 +14,8 @@ def home(request):
 def run_task(request):
     if request.POST:
         task_type = request.POST.get("type")
-        return JsonResponse({"task_type": task_type}, status=202)
+        task = create_task.delay(int(task_type))
+        return JsonResponse({"task_id": task.id}, status=202)
 
 
 @csrf_exempt

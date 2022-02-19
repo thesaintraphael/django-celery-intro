@@ -3,6 +3,9 @@ atomicwrites==1.4.0
 attrs==21.4.0
 backports.zoneinfo==0.2.1
 black==22.1.0
+celery
+django-celery
+django-celery-beat
 click==8.0.3
 colorama==0.4.4
 Django==4.0.2
@@ -16,6 +19,7 @@ py==1.11.0
 pyparsing==3.0.7
 pytest==7.0.1
 pytest-django==4.5.2
+redis
 sqlparse==0.4.2
 tomli==2.0.1
 typing_extensions==4.1.1
