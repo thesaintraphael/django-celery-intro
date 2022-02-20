@@ -10,7 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+
 from pathlib import Path
+from celery.schedules import crontab
+
+import orders.tasks.sample
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,6 +132,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+
+
+CELERY_BEAT_SCHEDULE = {
+    "sample": {
+        "task": "orders.tasks.sample.sample",
+        "schedule": crontab(minute="*/1"),
+    },
+}
 
 
 # Default primary key field type
