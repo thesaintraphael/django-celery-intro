@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from celery.schedules import crontab
 
-import orders.tasks.sample
+import orders.tasks.email_tasks
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -135,9 +135,9 @@ CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 
 
 CELERY_BEAT_SCHEDULE = {
-    "sample": {
-        "task": "orders.tasks.sample.sample",
-        "schedule": crontab(minute="*/1"),
+    "send_email_report": {
+        "task": "orders.tasks.email_tasks.send_email_report",
+        "schedule": crontab(hour="*/1"),
     },
 }
 
@@ -146,3 +146,8 @@ CELERY_BEAT_SCHEDULE = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+DEFAULT_FROM_EMAIL = "noreply@email.com"
+ADMINS = [("testuser", "test.user@email.com"), ]
