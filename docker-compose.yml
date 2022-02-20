@@ -19,7 +19,7 @@ services:
 
   celery:
     build: ./project
-    command: celery -A core worker -l info --logfile=logs/celery.log
+    command: celery -A core worker -l info
     volumes:
       - ./project:/usr/src/app
     environment:
