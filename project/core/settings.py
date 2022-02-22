@@ -15,7 +15,7 @@ from pathlib import Path
 from celery.schedules import crontab
 
 import orders.tasks.email_tasks
-
+import tasks.sample_task
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -139,6 +139,11 @@ CELERY_BEAT_SCHEDULE = {
         "task": "orders.tasks.email_tasks.send_email_report",
         "schedule": crontab(hour="*/1"),
     },
+    
+    "sample_task": {
+        "task": "tasks.sample_task.task_process_notification",
+        "schedule": crontab(minute="*/1")
+    }
 }
 
 
