@@ -14,6 +14,13 @@ git clone https://github.com/thesaintraphael/django-celery-intro.git
 docker-compose up -d --build
 ```
 
+## Run tests
+
+```bash
+docker-compose exec web python -m pytest
+```
+
+
 ## Used Resources
 ```bash
 1. https://testdriven.io/blog/django-and-celery/

@@ -169,6 +169,7 @@ commands.txt
 .idea/
 .idea/vcs.xml
 idea
+../.idea/
 .vscode
 ### Python ###
 # Byte-compiled / optimized / DLL files
