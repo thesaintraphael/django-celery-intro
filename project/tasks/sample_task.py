@@ -1,7 +1,12 @@
-import random
-import time
+from django.contrib.auth import get_user_model as User
 
 from celery import shared_task
+
+import random
+import string
+import time
+
+from .decorators.celery_transaction import CeleryTransaction
 
 
 @shared_task
@@ -20,3 +25,10 @@ def task_process_notification(self):
         raise Exception()
 
     print("Executed")
+
+
+@shared_task
+@CeleryTransaction(max_retries=5)
+def task_transaction_test():
+    username = "".join(random.choices(string.ascii_uppercase + string.digits, k=8))
+    User.objects.create(username=username, password="sdcnkKJDsn2738$%")
