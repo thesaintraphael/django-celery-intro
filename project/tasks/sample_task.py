@@ -26,9 +26,3 @@ def task_process_notification(self):
 
     print("Executed")
 
-
-@shared_task
-@CeleryTransaction(max_retries=5)
-def task_transaction_test():
-    username = "".join(random.choices(string.ascii_uppercase + string.digits, k=8))
-    User.objects.create(username=username, password="sdcnkKJDsn2738$%")
