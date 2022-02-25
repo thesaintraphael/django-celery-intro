@@ -1,12 +1,7 @@
-from django.contrib.auth import get_user_model as User
-
 from celery import shared_task
 
 import random
-import string
 import time
-
-from .decorators.celery_transaction import CeleryTransaction
 
 
 @shared_task
@@ -25,4 +20,3 @@ def task_process_notification(self):
         raise Exception()
 
     print("Executed")
-
