@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tasks.apps.TasksConfig',
     'orders.apps.OrdersConfig',
+    
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+
+from orders.tasks.email_tasks import send_email_report
 
 
 CELERY_BEAT_SCHEDULE = {

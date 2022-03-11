@@ -20,3 +20,8 @@ def task_process_notification(self):
         raise Exception()
 
     print("Executed")
+
+
+@shared_task
+def admin_task():
+    print("Hello, this command is executed from an Admin panel")
