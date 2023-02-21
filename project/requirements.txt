@@ -8,7 +8,7 @@ django-celery
 django-celery-beat
 click==8.0.3
 colorama==0.4.4
-Django==4.0.9
+Django==4.1.7
 flower
 iniconfig==1.1.1
 mypy-extensions==0.4.3
