@@ -21,7 +21,7 @@ pyparsing==3.0.7
 pytest==7.0.1
 pytest-django==4.5.2
 redis
-sqlparse==0.4.2
+sqlparse==0.4.4
 tomli==2.0.1
 typing_extensions==4.1.1
 tzdata==2021.5
